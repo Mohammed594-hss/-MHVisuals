@@ -1,0 +1,98 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ------------------------------------------------------------------ */
+/* MH Visuals design system — dark by default, `.light` for light mode */
+/* ------------------------------------------------------------------ */
+:root {
+  --bg: #121212;
+  --surface: #000000;
+  --surface-2: #171717;
+  --surface-3: #1f1f1f;
+  --text: #f4f4f5;
+  --muted: #9aa0aa;
+  --border: #262626;
+  --cyan: #00f0ff;
+  --electric: #0052ff;
+}
+
+.light {
+  --bg: #f6f7f8;
+  --surface: #ffffff;
+  --surface-2: #f0f1f2;
+  --surface-3: #e9eaeb;
+  --text: #111214;
+  --muted: #6b7280;
+  --border: #e5e6e8;
+  --cyan: #0891b2;
+  --electric: #0052ff;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-surface-3: var(--surface-3);
+  --color-text: var(--text);
+  --color-muted: var(--muted);
+  --color-border: var(--border);
+  --color-cyan: var(--cyan);
+  --color-electric: var(--electric);
+  --font-sans: var(--font-inter);
+  --font-display: var(--font-jakarta);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  -webkit-font-smoothing: antialiased;
+}
+
+::selection {
+  background: var(--cyan);
+  color: #000;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-track {
+  background: var(--bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--surface-3);
+  border-radius: 999px;
+  border: 2px solid var(--bg);
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--cyan);
+}
+
+/* Neon glow helpers */
+.glow-text {
+  text-shadow: 0 0 20px rgba(0, 240, 255, 0.55);
+}
+.glow-box {
+  box-shadow: 0 0 0 1px rgba(0, 240, 255, 0.4), 0 0 28px rgba(0, 240, 255, 0.18);
+}
+
+@keyframes float-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.animate-float-in {
+  animation: float-in 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
